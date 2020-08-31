@@ -1,21 +1,8 @@
+import 'package:agenda_de_contatos_app/ui/home_page.dart';
 import 'package:flutter/material.dart';
-
-class Home extends StatefulWidget {
-  @override
-  _HomeState createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-
-    );
-  }
-}//end _HomeState extends State<Home>
 
 void main(){
   runApp(MaterialApp(
-    home: Home(),
+    home: HomePage(),
   ));
 }//end main

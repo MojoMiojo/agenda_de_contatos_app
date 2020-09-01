@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:agenda_de_contatos_app/helpers/contact_helper.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -40,9 +43,56 @@ class _HomePageState extends State<HomePage> {
           padding: EdgeInsets.all(10),
           itemCount: contacts.length,
           itemBuilder: (context,index){
-
+            return _contactCard(context, index);
           }
       ),
     );
   }
-}
+
+  //_contactCard
+  Widget _contactCard(BuildContext context, int index){
+   return GestureDetector(
+     child: Card(
+       child: Padding(
+         padding: EdgeInsets.all(10),
+         child: Row(
+           children: [
+             Container(
+               width: 80,
+               height: 80,
+               decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                 image: DecorationImage(
+                   image: contacts[index].img != null ?
+                       FileImage(File(contacts[index].img)) :
+                       AssetImage("images/person.png")
+                 )
+               ),
+             ),
+             Padding(
+               padding: EdgeInsets.only(left: 10),
+               child: Column(
+                 crossAxisAlignment: CrossAxisAlignment.start,
+                 children: [
+                   Text(contacts[index].name ?? "",
+                     style: TextStyle( fontSize: 22,
+                         fontWeight: FontWeight.bold),
+                   ),
+                   Text(contacts[index].email ?? "",
+                     style: TextStyle( fontSize: 18),
+                   ),
+                   Text(contacts[index].phone ?? "",
+                     style: TextStyle( fontSize: 22,
+                         fontWeight: FontWeight.bold),
+                   ),
+                 ],
+               )
+             )
+           ],
+         ),
+       ),
+     ),
+   );
+  }
+
+}//end class

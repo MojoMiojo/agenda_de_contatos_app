@@ -22,7 +22,7 @@ class ContactHelper{
   //initDB
   Future<Database> initDb() async {
     final databasesPath = await getDatabasesPath();
-    final path = join(databasesPath, "contactsDev.db");
+    final path = join(databasesPath, "contatos.db");
     
     return await openDatabase(path, version: 1, onCreate: (Database db, int newerVersion) async {
       await db.execute(
